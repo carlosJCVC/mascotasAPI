@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
             $user = User::create($item);
         }
 
-        $user->assignRole(['Administrator', 'Teacher']);
+//        $user->assignRole(['Administrator', 'Teacher']);
 
         $this->command->info('Admin User created with username admin@admin.com and password admin');
     }
