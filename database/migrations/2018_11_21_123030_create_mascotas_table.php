@@ -21,7 +21,7 @@ class CreateMascotasTable extends Migration
             $table->string('edad');
             $table->string('sexo');
             $table->boolean('estado');
-            $table->binary('imagen')->nullable();
+            $table->text('imagen')->nullable();
             $table->string('enfermedades');
             $table->string('procedencia');
             $table->string('descripcion');

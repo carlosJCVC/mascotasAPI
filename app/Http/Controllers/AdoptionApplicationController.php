@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Mascota;
+use App\models\AdoptionApplication;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use DB;
 
-class MascotaController extends Controller
+class AdoptionApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class MascotaController extends Controller
      */
     public function index()
     {
-        $mascotas = DB::table('mascotas')->get();
-
-        return response()->json($mascotas);
+        $datos = DB::table('adoption_applications')->get();
+        return response()->json($datos);
     }
 
     /**
@@ -30,10 +29,10 @@ class MascotaController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $input['estado'] = 1;
-        $mascota = new Mascota($input);
-        $mascota->save();
-        return response()->json($mascota);
+        $input['estado_solicitud'] = "EN PROCESO";
+        $adoptionApplication = new AdoptionApplication($input);
+        $adoptionApplication->save();
+        return response()->json($adoptionApplication);
     }
 
     /**
@@ -42,9 +41,9 @@ class MascotaController extends Controller
      * @param  \App\models\Mascota  $mascota
      * @return \Illuminate\Http\Response
      */
-    public function show(Mascota $mascota)
+    public function show(AdoptionApplication $adoptionApplication)
     {
-        return response()->json($mascota);
+        return response()->json($adoptionApplication);
     }
 
     /**
@@ -54,11 +53,11 @@ class MascotaController extends Controller
      * @param  \App\models\Mascota  $mascota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mascota $mascota)
+    public function update(Request $request, AdoptionApplication $adoptionApplication)
     {
         $input = $request->all();
-        $mascota->update($input );
-        return response()->json($mascota);
+        $adoptionApplication->update($input );
+        return response()->json($adoptionApplication);
     }
 
     /**
@@ -67,9 +66,9 @@ class MascotaController extends Controller
      * @param  \App\models\Mascota  $mascota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mascota $mascota)
+    public function destroy(AdoptionApplication $adoptionApplication)
     {
-        $mascota->delete();
-        return response()->json($mascota);
+        $adoptionApplication->delete();
+        return response()->json($adoptionApplication);
     }
 }

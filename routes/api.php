@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-header("Access-Control-Allow-Origin: http://localhost:4200");
-header('Access-Control-Allow-Methods: POST,GET,PUT,PATCH,OPTIONS');
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -93,4 +90,30 @@ Route::patch('mascotas/{mascota}', [
 Route::delete('mascotas/{mascota}', [
     'as' => 'mascotas.destroy',
     'uses' => 'MascotaController@destroy',
+]);
+
+//--------------------------AdoptionApplication CRUD-------------------------//
+Route::get('adoption_applications', [
+    'as' => 'adoption_applications.index',
+    'uses' => 'AdoptionApplicationController@index',
+]);
+Route::post('adoption_applications', [
+    'as' => 'adoption_applications.store',
+    'uses' => 'AdoptionApplicationController@store',
+]);
+Route::get('adoption_applications/{adoptionApplication}', [
+    'as' => 'adoption_applications.show',
+    'uses' => 'AdoptionApplicationController@show',
+]);
+Route::put('adoption_applications/{adoptionApplication}', [
+    'as' => 'adoption_applications.update',
+    'uses' => 'AdoptionApplicationController@update',
+]);
+Route::patch('adoption_applications/{adoptionApplication}', [
+    'as' => 'adoption_applications.update',
+    'uses' => 'AdoptionApplicationController@update',
+]);
+Route::delete('adoption_applications/{adoptionApplication}', [
+    'as' => 'adoption_applications.destroy',
+    'uses' => 'AdoptionApplicationController@destroy',
 ]);
